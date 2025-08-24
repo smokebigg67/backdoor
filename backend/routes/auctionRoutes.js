@@ -8,6 +8,7 @@ const { asyncHandler, formatValidationErrors, NotFoundError, ValidationError } =
 const web3Service = require('../services/web3Service');
 const { socketService } = require('../services/socketService');
 const logger = require('../utils/logger');
+const { formatTokenAmount } = require('../utils/formatters');
 
 const router = express.Router();
 

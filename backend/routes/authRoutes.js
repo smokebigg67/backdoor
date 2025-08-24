@@ -5,7 +5,7 @@ const speakeasy = require('speakeasy');
 const QRCode = require('qrcode');
 const crypto = require('crypto');
 const User = require('../models/userModel');
-const auth = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const logger = require('../utils/logger');
 const { ethers } = require('ethers');
 
