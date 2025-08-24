@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import { apiService, Auction } from '@/lib/api';
-import { formatTokenAmount } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 interface AuctionFiltersProps {
