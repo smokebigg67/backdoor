@@ -84,10 +84,21 @@ export const formatTimeRemaining = (endTimeSeconds: number): string => {
   }
 };
 
-/**
- * Format token amount with proper number handling
- */
 export const formatTokenAmountSafe = (amount: string | number): string => {
+  const num = typeof amount === 'string' ? parseFloat(amount) : amount;
+  if (isNaN(num)) return '0';
+  if (num >= 1000000) {
+    return `${(num / 1000000).toFixed(2)}M`;
+  } else if (num >= 1000) {
+    return `${(num / 1000).toFixed(2)}K`;
+  }
+  return num.toFixed(2);
+};
+
+/**
+ * Format token amount for display (main function to use)
+ */
+export const formatTokenAmount = (amount: string | number): string => {
   const num = typeof amount === 'string' ? parseFloat(amount) : amount;
   if (isNaN(num)) return '0';
   if (num >= 1000000) {
