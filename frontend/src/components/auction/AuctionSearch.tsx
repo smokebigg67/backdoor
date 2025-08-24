@@ -15,7 +15,7 @@ export const AuctionSearch = () => {
   const [categories, setCategories] = useState<Array<{ name: string; count: number }>>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
-  const [auctionType, setAuctionType] = useState('');
+  const [auctionType, setAuctionType] = useState('all');
   const [isSearching, setIsSearching] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -57,7 +57,7 @@ export const AuctionSearch = () => {
       if (selectedCategory) filters.category = selectedCategory;
       if (priceRange.min) filters.priceMin = parseFloat(priceRange.min);
       if (priceRange.max) filters.priceMax = parseFloat(priceRange.max);
-      if (auctionType) filters.type = auctionType;
+      if (auctionType && auctionType !== 'all') filters.type = auctionType;
 
       const response = await apiService.searchAuctions(searchQuery, filters);
       setSearchResults(response.data.auctions);
@@ -73,9 +73,9 @@ export const AuctionSearch = () => {
 
   const clearFilters = () => {
     setSearchQuery('');
-    setSelectedCategory('');
+    setSelectedCategory('all');
     setPriceRange({ min: '', max: '' });
-    setAuctionType('');
+    setAuctionType('all');
     setSearchResults([]);
   };
 
@@ -124,7 +124,7 @@ export const AuctionSearch = () => {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 {categories.map((category) => (
                   <SelectItem key={category.name} value={category.name}>
                     {category.name.charAt(0).toUpperCase() + category.name.slice(1)} ({category.count})
@@ -138,7 +138,7 @@ export const AuctionSearch = () => {
                 <SelectValue placeholder="Auction Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="forward">Forward Auction</SelectItem>
                 <SelectItem value="reverse">Reverse Auction</SelectItem>
               </SelectContent>

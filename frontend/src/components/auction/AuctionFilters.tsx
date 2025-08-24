@@ -17,12 +17,12 @@ interface AuctionFiltersProps {
 
 export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFiltersProps) => {
   const [filters, setFilters] = useState({
-    category: '',
-    type: '',
+    category: 'all',
+    type: 'all',
     status: 'active',
     priceRange: [0, 10000],
-    condition: '',
-    endingIn: '',
+    condition: 'all',
+    endingIn: 'all',
     sortBy: 'newest',
     hasReserve: false,
     hasBuyNow: false,
@@ -56,7 +56,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
   ];
 
   const endingInOptions = [
-    { value: '', label: 'Any Time' },
+    { value: 'all', label: 'Any Time' },
     { value: '1h', label: 'Next Hour' },
     { value: '6h', label: 'Next 6 Hours' },
     { value: '24h', label: 'Next 24 Hours' },
@@ -100,9 +100,9 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
         limit: 50
       };
 
-      if (filters.category) params.category = filters.category;
-      if (filters.type) params.type = filters.type;
-      if (filters.condition) params.condition = filters.condition;
+      if (filters.category && filters.category !== 'all') params.category = filters.category;
+      if (filters.type && filters.type !== 'all') params.type = filters.type;
+      if (filters.condition && filters.condition !== 'all') params.condition = filters.condition;
       if (filters.priceRange[0] > 0) params.price_min = filters.priceRange[0];
       if (filters.priceRange[1] < 10000) params.price_max = filters.priceRange[1];
 
@@ -121,7 +121,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
         filteredAuctions = filteredAuctions.filter(a => a.bidding.totalBids >= filters.minBids);
       }
 
-      if (filters.endingIn) {
+      if (filters.endingIn && filters.endingIn !== 'all') {
         const now = Date.now();
         const timeLimit = getTimeLimit(filters.endingIn);
         filteredAuctions = filteredAuctions.filter(a => {
@@ -147,6 +147,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
       case '6h': return 6 * 60 * 60 * 1000;
       case '24h': return 24 * 60 * 60 * 1000;
       case '7d': return 7 * 24 * 60 * 60 * 1000;
+      case 'all': return Infinity;
       default: return Infinity;
     }
   };
@@ -157,12 +158,12 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
 
   const clearFilters = () => {
     setFilters({
-      category: '',
-      type: '',
+      category: 'all',
+      type: 'all',
       status: 'active',
       priceRange: [0, 10000],
-      condition: '',
-      endingIn: '',
+      condition: 'all',
+      endingIn: 'all',
       sortBy: 'newest',
       hasReserve: false,
       hasBuyNow: false,
@@ -172,11 +173,11 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
 
   const getActiveFilterCount = () => {
     let count = 0;
-    if (filters.category) count++;
-    if (filters.type) count++;
-    if (filters.condition) count++;
+    if (filters.category && filters.category !== 'all') count++;
+    if (filters.type && filters.type !== 'all') count++;
+    if (filters.condition && filters.condition !== 'all') count++;
     if (filters.priceRange[0] > 0 || filters.priceRange[1] < 10000) count++;
-    if (filters.endingIn) count++;
+    if (filters.endingIn && filters.endingIn !== 'all') count++;
     if (filters.hasReserve) count++;
     if (filters.hasBuyNow) count++;
     if (filters.minBids > 0) count++;
@@ -221,7 +222,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Categories</SelectItem>
+              <SelectItem value="all">All Categories</SelectItem>
               {categories.map((category) => (
                 <SelectItem key={category.name} value={category.name}>
                   {category.name.charAt(0).toUpperCase() + category.name.slice(1)} ({category.count})
@@ -235,7 +236,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
               <SelectValue placeholder="Auction Type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Types</SelectItem>
+              <SelectItem value="all">All Types</SelectItem>
               <SelectItem value="forward">Forward Auction</SelectItem>
               <SelectItem value="reverse">Reverse Auction</SelectItem>
             </SelectContent>
@@ -303,7 +304,7 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
                   <SelectValue placeholder="Any Condition" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Any Condition</SelectItem>
+                  <SelectItem value="all">Any Condition</SelectItem>
                   {conditionOptions.map((condition) => (
                     <SelectItem key={condition.value} value={condition.value}>
                       {condition.label}
@@ -363,17 +364,17 @@ export const AuctionFilters = ({ onFiltersChange, onLoadingChange }: AuctionFilt
               <span className="text-muted-foreground">None</span>
             ) : (
               <div className="flex gap-1">
-                {filters.category && (
+                {filters.category && filters.category !== 'all' && (
                   <Badge variant="outline" className="text-xs">
                     {filters.category}
                   </Badge>
                 )}
-                {filters.type && (
+                {filters.type && filters.type !== 'all' && (
                   <Badge variant="outline" className="text-xs">
                     {filters.type}
                   </Badge>
                 )}
-                {filters.condition && (
+                {filters.condition && filters.condition !== 'all' && (
                   <Badge variant="outline" className="text-xs">
                     {filters.condition}
                   </Badge>

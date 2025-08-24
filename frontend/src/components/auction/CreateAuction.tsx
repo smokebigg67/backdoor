@@ -15,7 +15,7 @@ export const CreateAuction = () => {
   const [auctionData, setAuctionData] = useState({
     title: '',
     description: '',
-    category: '',
+    category: 'electronics',
     type: 'forward',
     startingBid: '',
     reservePrice: '',

@@ -185,7 +185,7 @@ export const PaymentGateway = () => {
 
       {/* Payment Methods */}
       {isLoading ? (
-        <Card className="border-panel-border bg-secondary/20 p-3 animate-pulse">
+            <option value="mtn_momo">Select Payment Method</option>
           <div className="h-4 bg-secondary/40 rounded mb-3"></div>
           <div className="space-y-2">
             {[1, 2, 3].map(i => (

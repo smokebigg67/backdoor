@@ -209,7 +209,7 @@ export const SecurityPanel = () => {
             onChange={(e) => setReportIssue(prev => ({ ...prev, type: e.target.value }))}
             className="w-full bg-background border border-panel-border px-2 py-1 text-xs focus:border-terminal-green focus:outline-none"
           >
-            <option value="">Select Issue Type</option>
+            <option value="other">Select Issue Type</option>
             <option value="suspicious_activity">Suspicious Activity</option>
             <option value="phishing_attempt">Phishing Attempt</option>
             <option value="unauthorized_access">Unauthorized Access</option>

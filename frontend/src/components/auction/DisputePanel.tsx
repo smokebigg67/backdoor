@@ -119,7 +119,7 @@ export const DisputePanel = () => {
             onChange={(e) => setSelectedEscrow(e.target.value)}
             className="w-full bg-background border border-panel-border px-2 py-1 text-xs focus:border-terminal-green focus:outline-none"
           >
-            <option>Select Escrow Transaction</option>
+            <option value="none">Select Escrow Transaction</option>
             {escrowOptions.map((escrow) => (
               <option key={escrow.escrowId} value={escrow.escrowId}>
                 {escrow.escrowId} - {escrow.auctionItem}
