@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { apiService } from '@/lib/api';
 import { useWeb3 } from '@/contexts/Web3Context';
-import { formatTokenAmount } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 interface BidIncrementProps {

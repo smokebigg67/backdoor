@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { apiService } from '@/lib/api';
-import { formatTokenAmount } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 interface TreasuryData {

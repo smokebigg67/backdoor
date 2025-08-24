@@ -316,34 +316,10 @@ class Web3Service {
 export const web3Service = new Web3Service();
 
 // Utility functions
-export const formatTokenAmount = (amount: string, decimals: number = 18): string => {
+export const formatEthAmount = (amount: string, decimals: number = 18): string => {
   const num = parseFloat(amount);
   if (isNaN(num)) return '0';
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(2)}M`;
-  } else if (num >= 1000) {
-    return `${(num / 1000).toFixed(2)}K`;
-  }
-  return num.toFixed(2);
-};
-
-export const formatTimeRemaining = (endTime: number): string => {
-  const now = Math.floor(Date.now() / 1000);
-  const remaining = endTime - now;
-  
-  if (remaining <= 0) return 'Ended';
-  
-  const hours = Math.floor(remaining / 3600);
-  const minutes = Math.floor((remaining % 3600) / 60);
-  const seconds = remaining % 60;
-  
-  if (hours > 0) {
-    return `${hours}h ${minutes}m`;
-  } else if (minutes > 0) {
-    return `${minutes}m ${seconds}s`;
-  } else {
-    return `${seconds}s`;
-  }
+  return num.toFixed(4);
 };
 
 // Global window type extension

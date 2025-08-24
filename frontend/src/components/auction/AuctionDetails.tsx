@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { apiService, Auction } from '@/lib/api';
 import { useWeb3 } from '@/contexts/Web3Context';
-import { formatTokenAmount, formatTimeRemaining } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { BidIncrement } from './BidIncrement';
 import { toast } from 'sonner';
 

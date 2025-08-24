@@ -1,5 +1,6 @@
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { formatTokenAmount } from '@/utils/formatters';
 
 
 export const UserWallet = () => {

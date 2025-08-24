@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { apiService, PaymentMethod } from "@/lib/api";
 import { useWeb3 } from "@/contexts/Web3Context";
 import { toast } from "sonner";
-import { formatTokenAmount } from "@/lib/web3";
+import { formatTokenAmount } from '@/utils/formatters';
 
 export const PaymentGateway = () => {
   const { isAuthenticated, balance, refreshBalance } = useWeb3();

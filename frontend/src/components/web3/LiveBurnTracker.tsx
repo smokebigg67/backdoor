@@ -3,19 +3,8 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { apiService } from '@/lib/api';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
-
-// Simple utility function for formatting token amounts
-const formatTokenAmount = (amount: string | number): string => {
-  const num = typeof amount === 'string' ? parseFloat(amount) : amount;
-  if (isNaN(num)) return '0';
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(2)}M`;
-  } else if (num >= 1000) {
-    return `${(num / 1000).toFixed(2)}K`;
-  }
-  return num.toFixed(2);
-};
 
 interface BurnEvent {
   id: string;

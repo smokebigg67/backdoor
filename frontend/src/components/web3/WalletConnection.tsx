@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useWeb3 } from '@/contexts/Web3Context';
+import { formatAddress } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 // Simple utility function for formatting token amounts

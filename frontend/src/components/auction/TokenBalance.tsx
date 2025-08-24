@@ -1,4 +1,5 @@
 import { Progress } from "@/components/ui/progress";
+import { formatTokenAmount } from '@/utils/formatters';
 
 export const TokenBalance = () => {
   return (

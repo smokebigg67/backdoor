@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { apiService } from '@/lib/api';
 import { useWeb3 } from '@/contexts/Web3Context';
-import { formatTokenAmount } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 
 export const AdvancedAnalytics = () => {
   const { isAuthenticated, user } = useWeb3();

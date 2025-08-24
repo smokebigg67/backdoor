@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { apiService, Auction } from '@/lib/api';
 import { useWeb3 } from '@/contexts/Web3Context';
-import { formatTokenAmount, formatTimeRemaining } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 export const WatchlistManager = () => {

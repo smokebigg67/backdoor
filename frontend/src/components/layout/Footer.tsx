@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { useWeb3 } from '@/contexts/Web3Context';
-import { formatTokenAmount } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 
 export const Footer = () => {
   const { tokenInfo } = useWeb3();

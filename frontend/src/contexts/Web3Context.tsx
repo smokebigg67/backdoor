@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { web3Service, WalletConnection, TokenInfo } from '@/lib/web3';
 import { apiService, User } from '@/lib/api';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 interface Web3ContextType {

@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { apiService, Auction } from '@/lib/api';
 import { AuctionCard } from './AuctionCard';
-import { formatTokenAmount, formatTimeRemaining } from '@/lib/web3';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 export const AuctionSearch = () => {

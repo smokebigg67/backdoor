@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { apiService, Auction } from '@/lib/api';
 import { useWebSocket } from './useWebSocket';
+import { formatTokenAmount } from '@/utils/formatters';
 import { toast } from 'sonner';
 
 export function useAuction(auctionId: string) {

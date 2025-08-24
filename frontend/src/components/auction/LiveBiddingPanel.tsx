@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { formatTokenAmount } from '@/utils/formatters';
 
 interface LiveBiddingPanelProps {
   auctionType: 'forward' | 'reverse';
